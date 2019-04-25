@@ -1,7 +1,5 @@
 #include "StoreServer.h"
 
-
-
 int init(WSADATA *pstWsd, SOCKET *iSocket, PCSTR iPort) {
 
 	int iRs = -1;
@@ -61,7 +59,7 @@ int settingSomething(SOCKET *iSocket, PCSTR iPort) {
 	int iRs;
 	struct addrinfo* pstAddr;
 
-	iRs = reqSocket(iSocket, &pstAddr, iPort);
+	iRs = reqSocket(iSocket, &pstAddr, iPort, NULL);
 	if (iRs != 0) {
 		cAlter(__FILE__, __FUNCTION__, __LINE__, "WSAStartup", iRs);
 		WSACleanup();
@@ -85,8 +83,8 @@ int settingSomething(SOCKET *iSocket, PCSTR iPort) {
 
 int recvClientData(SOCKET iClientSocket ) {
 
-	char cBuffer[C_BUFFER_SZIE + 1];
-	char cLen[C_BUFFER_LENGTH_SZIE + 1];
+	char cBuffer[C_BUFFER_SIZE + 1];
+	char cLen[C_BUFFER_LENGTH_SIZE + 1];
 	int iLen;
 	int iRs = -1;
 
@@ -94,20 +92,23 @@ int recvClientData(SOCKET iClientSocket ) {
 	memset(cLen, '\0', sizeof(cLen));
 	
 	//recv() will respond length of recieved.
-	iRs = recv(iClientSocket, cBuffer, C_BUFFER_LENGTH_SZIE, 0);
-	if (iRs == C_BUFFER_LENGTH_SZIE) {
+	iRs = recv(iClientSocket, cBuffer, C_BUFFER_LENGTH_SIZE, 0);
+	if (iRs == C_BUFFER_LENGTH_SIZE) {
 
-		memcpy(cLen, cBuffer, C_BUFFER_LENGTH_SZIE);
+		memcpy(cLen, cBuffer, C_BUFFER_LENGTH_SIZE);
 		memset(cBuffer, '\0', sizeof(cBuffer));
+
+		cLen[4] = '\0';
 
 		iLen = atoi(cLen);
 
 
+
 		iRs = recv(iClientSocket, cBuffer, iLen, 0);
 		if (iRs == iLen) {
-			printf("Recieved data:", cBuffer);
+			printf("Recieved data:%s", cBuffer);
 		}
-		else if (iRs > C_BUFFER_SZIE) {
+		else if (iRs > C_BUFFER_SIZE) {
 			printf("The buffer is not enough. Size:%d\n", iRs);
 		}
 
@@ -115,6 +116,24 @@ int recvClientData(SOCKET iClientSocket ) {
 		printf("Data length:%d\n", iLen);
 	}
 
-
+	return 0;
 }
 
+
+int closeServer(SOCKET iClientSocket) {
+
+	int iRs = -1;
+
+	iRs = shutdown(iClientSocket, SD_SEND);
+	if (iRs == SOCKET_ERROR) {
+		cAlter(__FILE__, __FUNCTION__, __LINE__, "shutdown", iRs);
+		closesocket(iClientSocket);
+		WSACleanup();
+		return -1;
+	}
+
+	closesocket(iClientSocket);
+	WSACleanup();
+
+	return 0;
+}

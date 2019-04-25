@@ -1,6 +1,6 @@
 #pragma once
 
-#include "StoreServer.h"
+#include "../LibSocket/StoreServer.h"
 
 
 #define C_CONNECT_MAX 1 

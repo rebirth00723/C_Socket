@@ -15,12 +15,24 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Client.c">
+    <ClCompile Include="SendClient.c">
+      <Filter>來源檔案</Filter>
+    </ClCompile>
+    <ClCompile Include="SocketInterface.c">
+      <Filter>來源檔案</Filter>
+    </ClCompile>
+    <ClCompile Include="StoreServer.c">
       <Filter>來源檔案</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Client.h">
+    <ClInclude Include="SendClient.h">
+      <Filter>標頭檔</Filter>
+    </ClInclude>
+    <ClInclude Include="SocketInterface.h">
+      <Filter>標頭檔</Filter>
+    </ClInclude>
+    <ClInclude Include="StoreServer.h">
       <Filter>標頭檔</Filter>
     </ClInclude>
   </ItemGroup>

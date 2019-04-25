@@ -26,6 +26,8 @@ int main() {
 
 	printf("Hello world!");
 
+	closeServer(iClientSocket);
+
 	return 0;
 }
 

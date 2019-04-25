@@ -7,6 +7,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "C_Socket_Client", "C_Socket
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "C_Socket_Server", "C_Socket_Server\C_Socket.vcxproj", "{C5ED9E90-085A-49A6-8A38-985B9532152E}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LibSocket", "LibSocket\LibSocket.vcxproj", "{275E7CEF-A869-4CD9-8BC7-7E8F69DF46A3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -31,6 +33,14 @@ Global
 		{C5ED9E90-085A-49A6-8A38-985B9532152E}.Release|x64.Build.0 = Release|x64
 		{C5ED9E90-085A-49A6-8A38-985B9532152E}.Release|x86.ActiveCfg = Release|Win32
 		{C5ED9E90-085A-49A6-8A38-985B9532152E}.Release|x86.Build.0 = Release|Win32
+		{275E7CEF-A869-4CD9-8BC7-7E8F69DF46A3}.Debug|x64.ActiveCfg = Debug|x64
+		{275E7CEF-A869-4CD9-8BC7-7E8F69DF46A3}.Debug|x64.Build.0 = Debug|x64
+		{275E7CEF-A869-4CD9-8BC7-7E8F69DF46A3}.Debug|x86.ActiveCfg = Debug|Win32
+		{275E7CEF-A869-4CD9-8BC7-7E8F69DF46A3}.Debug|x86.Build.0 = Debug|Win32
+		{275E7CEF-A869-4CD9-8BC7-7E8F69DF46A3}.Release|x64.ActiveCfg = Release|x64
+		{275E7CEF-A869-4CD9-8BC7-7E8F69DF46A3}.Release|x64.Build.0 = Release|x64
+		{275E7CEF-A869-4CD9-8BC7-7E8F69DF46A3}.Release|x86.ActiveCfg = Release|Win32
+		{275E7CEF-A869-4CD9-8BC7-7E8F69DF46A3}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
