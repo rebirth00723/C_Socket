@@ -11,7 +11,7 @@ int main() {
 	char caBuffer[C_BUFFER_SIZE+1];
 	int iLen;
 	
-	iRs = prepareServer(&stWsd, &iListenSocket, iClientSocket);
+	iRs = prepareServer(&stWsd, &iListenSocket);
 	if (iRs != 0) {
 		c_Alter(__FILE__, __FUNCTION__, __LINE__, "prepareServer", iRs);
 		return -1;
@@ -51,7 +51,7 @@ int main() {
 }
 
 
-int prepareServer(WSADATA *stWsd, SOCKET *iListenSocket, SOCKET * iClientSocket) {
+int prepareServer(WSADATA *stWsd, SOCKET *iListenSocket) {
 
 	int iRs;
 
