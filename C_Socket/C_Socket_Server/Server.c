@@ -44,8 +44,6 @@ int main() {
 		c_Alter(__FILE__, __FUNCTION__, __LINE__, "closeServer", iRs);
 		return -1;
 	}
-	system("pause");
-
 
 	return 0;
 }
