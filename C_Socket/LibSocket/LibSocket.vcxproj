@@ -91,6 +91,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <CompileAs>CompileAsC</CompileAs>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -154,6 +155,7 @@
     <ClCompile Include="SendClient.c" />
     <ClCompile Include="SocketInterface.c" />
     <ClCompile Include="StoreServer.c" />
+    <ClCompile Include="teatMian.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="SendClient.h" />

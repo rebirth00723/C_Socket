@@ -3,12 +3,15 @@
   <ImportGroup Label="PropertySheets" />
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup>
-    <LibraryPath>C:\Users\azure\source\repos\C_Socket\C_Socket\Debug;$(LibraryPath)</LibraryPath>
+    <LibraryPath>C:\Users\azure\source\repos\C_Socket\C_Socket\Release;C:\Users\azure\source\repos\C_Socket\C_Socket\Debug;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup>
     <ClCompile>
       <CompileAs>CompileAsC</CompileAs>
     </ClCompile>
+    <Link>
+      <AdditionalDependencies>LibSocket.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
   </ItemDefinitionGroup>
   <ItemGroup />
 </Project>

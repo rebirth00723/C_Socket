@@ -4,9 +4,10 @@
 #include <ws2tcpip.h>
 
 #pragma comment(lib, "Ws2_32.lib")
+#pragma warning( disable : 4996 )
 
-int parsingAddr(struct addrinfo **pstAddr, PCSTR iPort, PCSTR pcIp);
-int reqSocket(SOCKET* iSocket, struct addrinfo **pstAddr, PCSTR iPort, PCSTR pcIp);
+int parsingAddr(struct addrinfo **pstAddr, PCSTR iPort, PCSTR pcIp, char cStatus);
+int reqSocket(SOCKET *iSocket, struct addrinfo **pstAddr, PCSTR iPort, PCSTR pcIp, char cStatus);
 
-void cAlter(const char* cpcFile, const char* cpcSFunc, int iLine, const char* cpcFunc, int iRs);
+void c_Alter(const char* cpcFile, const char* cpcSFunc, int iLine, const char* cpcFunc, int iRs);
 

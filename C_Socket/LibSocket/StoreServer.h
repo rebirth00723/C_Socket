@@ -1,14 +1,13 @@
 #pragma once
-#include "SocketInterFace.h"
+#include "SocketInterface.h"
 
 
-int init(WSADATA* pstWsd, SOCKET* iSocket, PCSTR iPort);
-
-int settingSomething(SOCKET* iSocket, PCSTR iPort);
+int c_init(WSADATA* pstWsd, SOCKET* iSocket, PCSTR iPort, PCSTR pcIp);
 int startListen(SOCKET iSocket, int iConnAmt);
 int waitForUsrConn(SOCKET iListenSocket, SOCKET* piClientSocket);
-int recvClientData();
-int closeServer(SOCKET iClientSocket);
+int recvClientData(SOCKET iClientSocket, char* pcBuffer, int* iLen);
+int stroeDataOfRecv(char* pcFileName, char* pcBuffer, int iSize);
+int closeServer(SOCKET iClientSocket, SOCKET iListenSocket);
 
 
 #define C_BUFFER_SIZE	512
