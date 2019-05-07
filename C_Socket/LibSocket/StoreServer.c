@@ -109,7 +109,7 @@ int recvClientData(SOCKET iClientSocket, char* pcBuffer, int *iLen) {
 	return 0;
 }
 
-int stroeDataOfRecv(char* pcFileName, char* pcBuffer, int iSize) {
+int storeDataOfRecv(char* pcFileName, char* pcBuffer, int iSize) {
 
 	FILE* pFile;
 
@@ -120,16 +120,15 @@ int stroeDataOfRecv(char* pcFileName, char* pcBuffer, int iSize) {
 		return -1;
 	}
 
-	if (fputs(pcBuffer, pFile) != EOF) {
+	if (fputs(pcBuffer, pFile) == EOF) {
+		c_Alter(__FILE__, __FUNCTION__, __LINE__, "fputs", -1);
 		fclose(pFile);
-		return 0;
+		return -1;
 	}
-
-	c_Alter(__FILE__, __FUNCTION__, __LINE__, "fputs", -1);
+	
 	fclose(pFile);
 
-	return -1;
-
+	return 0;
 }
 
 int closeServer(SOCKET iClientSocket, SOCKET iListenSocket) {

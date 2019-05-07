@@ -6,7 +6,7 @@ int c_init(WSADATA* pstWsd, SOCKET* iSocket, PCSTR iPort, PCSTR pcIp);
 int startListen(SOCKET iSocket, int iConnAmt);
 int waitForUsrConn(SOCKET iListenSocket, SOCKET* piClientSocket);
 int recvClientData(SOCKET iClientSocket, char* pcBuffer, int* iLen);
-int stroeDataOfRecv(char* pcFileName, char* pcBuffer, int iSize);
+int storeDataOfRecv(char* pcFileName, char* pcBuffer, int iSize);
 int closeServer(SOCKET iClientSocket, SOCKET iListenSocket);
 
 

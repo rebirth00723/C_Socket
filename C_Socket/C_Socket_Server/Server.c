@@ -1,7 +1,6 @@
 ﻿#include "Server.h"
 
 
-
 int main() {
 
 	int iRs;
@@ -11,15 +10,9 @@ int main() {
 	char caBuffer[C_BUFFER_SIZE+1];
 	int iLen;
 	
-	iRs = prepareServer(&stWsd, &iListenSocket);
+	iRs = getClientSocket(&stWsd, &iListenSocket, &iClientSocket);
 	if (iRs != 0) {
-		c_Alter(__FILE__, __FUNCTION__, __LINE__, "prepareServer", iRs);
-		return -1;
-	}
-
-	iRs = waitForUsrConn(iListenSocket, &iClientSocket);
-	if (iRs != 0) {
-		c_Alter(__FILE__, __FUNCTION__, __LINE__, "waitForUsrConn", iRs);
+		c_Alter(__FILE__, __FUNCTION__, __LINE__, "getClientSocket", iRs);
 		return -1;
 	}
 
@@ -33,9 +26,9 @@ int main() {
 
 	printf("%s\n%d\n", caBuffer, iLen);
 
-	iRs = stroeDataOfRecv("store.txt", caBuffer, iLen);
+	iRs = storeDataOfRecv("store.txt", caBuffer, iLen);
 	if (iRs != 0) {
-		c_Alter(__FILE__, __FUNCTION__, __LINE__, "stroeRecvData", iRs);
+		c_Alter(__FILE__, __FUNCTION__, __LINE__, "storeRecvData", iRs);
 		return -1;
 	}
 
@@ -48,6 +41,25 @@ int main() {
 	return 0;
 }
 
+
+int getClientSocket(WSADATA *stWsd, SOCKET *iListenSocket, SOCKET *iClientSocket) {
+
+	int iRs;
+
+	iRs = prepareServer(&stWsd, &iListenSocket);
+	if (iRs != 0) {
+		c_Alter(__FILE__, __FUNCTION__, __LINE__, "prepareServer", iRs);
+		return -1;
+	}
+
+	iRs = waitForUsrConn(iListenSocket, &iClientSocket);
+	if (iRs != 0) {
+		c_Alter(__FILE__, __FUNCTION__, __LINE__, "waitForUsrConn", iRs);
+		return -1;
+	}
+
+	return 0;
+}
 
 int prepareServer(WSADATA *stWsd, SOCKET *iListenSocket) {
 
@@ -64,7 +76,6 @@ int prepareServer(WSADATA *stWsd, SOCKET *iListenSocket) {
 		c_Alter(__FILE__, __FUNCTION__, __LINE__, "startListen", iRs);
 		return -1;
 	}
-
 
 	return 0;
 }
